@@ -1,6 +1,6 @@
 import { GameData, WinnerData } from '../@types/game'
 import { CryptoListing, CryptoPlayer } from '../@types/crypto'
-import { shuffleCryptoListings, reduceCryptoList } from './cryptodata'
+import { shuffleCryptoListings, reduceCryptoList } from './cryptolistings'
 
 const random = (max: number): number => Math.floor(Math.random() * max)
 
@@ -10,7 +10,7 @@ export const pickWinner = (selections: CryptoListing[]): WinnerData => {
   return { winner, winnerPosition }
 }
 
-export const cleanUpCryptoPlayers = (listings: CryptoListing[]): CryptoPlayer[] => {
+export const cryptoListingsToCryptoPlayers = (listings: CryptoListing[]): CryptoPlayer[] => {
   const players: CryptoPlayer[] = listings.map((player) => ({
     id: player.id,
     name: player.name,
@@ -26,7 +26,7 @@ export const constructGame = async (cryptos: CryptoListing[], gameSize: number =
 
   const { winner, winnerPosition } = pickWinner(listings)
 
-  const participants: CryptoPlayer[] = cleanUpCryptoPlayers(listings)
+  const participants: CryptoPlayer[] = cryptoListingsToCryptoPlayers(listings)
 
   const game: GameData = {
     winner,

@@ -2,7 +2,8 @@ import { Request, Response } from 'express'
 import { CryptoListing } from '../@types/crypto'
 import { asyncHandler } from '../helpers/asynchandler'
 
-import { getCryptoListings, sortCryptoListings } from '../services/cryptodata'
+import { getCryptoListings } from '../services/cryptodata'
+import { sortCryptoListings } from '../services/cryptolistings'
 
 export const listCryptos = asyncHandler(async (request: Request, response: Response) => {
   const { sort } = request.query
