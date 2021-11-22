@@ -5,7 +5,7 @@ export type CryptoListing = {
   slug: string,
   num_market_pairs: number,
   date_added: string,
-  tags: [],
+  tags: string[],
   max_supply: number,
   circulating_supply: number,
   total_supply: number,
