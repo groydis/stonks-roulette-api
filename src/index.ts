@@ -10,6 +10,8 @@ const port: number = Number(process.env.PORT)
 
 app.use('/', routes(express.Router()))
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.info(`API listening at http://localhost:${port}`)
 })
+
+export default server
