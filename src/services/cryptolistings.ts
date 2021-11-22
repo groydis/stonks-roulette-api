@@ -25,7 +25,7 @@ export const shuffleCryptoListings = (listings: CryptoListing[]): CryptoListing[
   return listings
 }
 
-export const reduceCryptoList = (listings: CryptoListing[], size: number = 10): CryptoListing[] => {
+export const reduceCryptoList = (listings: CryptoListing[], size: number): CryptoListing[] => {
   listings.length = size
   return listings
 }

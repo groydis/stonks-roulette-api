@@ -20,7 +20,7 @@ export const cryptoListingsToCryptoPlayers = (listings: CryptoListing[]): Crypto
   return players
 }
 
-export const constructGame = async (cryptos: CryptoListing[], gameSize: number = 10): Promise<any> => {
+export const constructGame = async (cryptos: CryptoListing[], gameSize: number): Promise<any> => {
   const shuffleData: CryptoListing[] = shuffleCryptoListings(cryptos)
   const listings: CryptoListing[] = reduceCryptoList(shuffleData, gameSize)
 
