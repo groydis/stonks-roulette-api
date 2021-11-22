@@ -3,7 +3,7 @@ import { GameData } from '../@types/game'
 import { CryptoListing } from '../@types/crypto'
 import { asyncHandler } from '../helpers/asynchandler'
 
-import { getCryptoListings } from '../services/cryptodata'
+import { getCryptoListings } from '../datasources/cryptodata'
 import { constructGame } from '../services/game'
 
 export const play = asyncHandler(async (request: Request, response: Response) => {
