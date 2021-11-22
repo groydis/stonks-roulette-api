@@ -1,5 +1,4 @@
 import * as request from 'supertest'
-import { CryptoListing } from '../@types/crypto'
 import { GameData } from '../@types/game'
 import server from '../index'
 
