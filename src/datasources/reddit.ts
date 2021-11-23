@@ -11,7 +11,6 @@ export const getTopRedditThreads = async (crypto: string, freq: string): Promise
       json: true,
     }
     const result: AxiosResponse = await axios(requestOptions)
-    console.info(result)
     const headlines: RedditHeadline[] = result.data.data.children
     return headlines
   } catch (error) {
