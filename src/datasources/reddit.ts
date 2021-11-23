@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios'
+import { RedditHeadline } from '../@types/reddit'
 
 const axios = require('axios')
 
@@ -11,7 +12,7 @@ export const getTopRedditThreads = async (crypto: string, freq: string): Promise
     }
     const result: AxiosResponse = await axios(requestOptions)
     console.info(result)
-    const headlines = result.data.data.children
+    const headlines: RedditHeadline[] = result.data.data.children
     return headlines
   } catch (error) {
     throw new Error(error)
