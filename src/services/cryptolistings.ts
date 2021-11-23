@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
 import { CryptoListing } from '../@types/crypto'
 
 export const sortCryptoListings = (listings: CryptoListing[], ascending: boolean = true): CryptoListing[] => {

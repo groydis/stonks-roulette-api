@@ -2,6 +2,10 @@ import * as request from 'supertest'
 import { GameData } from '../@types/game'
 import server from '../index'
 
+afterAll((done) => {
+  server.close(done())
+})
+
 describe('GET /health', () => {
   it('should return 200 OK', (done) => {
     request(server).get('/health').expect(200, done)
