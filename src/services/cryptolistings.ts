@@ -2,7 +2,7 @@
 /* eslint-disable no-plusplus */
 import { CryptoListing } from '../@types/crypto'
 
-export const sortCryptoListings = (listings: CryptoListing[], ascending: boolean = true): CryptoListing[] => {
+export const sortCryptoListings = (listings: CryptoListing[], ascending: boolean): CryptoListing[] => {
   if (ascending) {
     return listings.sort((a, b) => (a.id > b.id ? 1 : -1))
   }

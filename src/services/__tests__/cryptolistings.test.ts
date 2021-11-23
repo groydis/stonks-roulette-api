@@ -110,7 +110,7 @@ const listings: CryptoListing[] = [
 describe('sortCryptoListings', () => {
   it('should sort CryptoListings in ASC order', () => {
     const cryptoList: CryptoListing[] = listings
-    const ascListings: CryptoListing[] = CryptoListingService.sortCryptoListings(cryptoList)
+    const ascListings: CryptoListing[] = CryptoListingService.sortCryptoListings(cryptoList, true)
     expect(ascListings[0].id).toBeLessThan(ascListings[2].id)
     expect(ascListings[1].id).toBeLessThan(ascListings[2].id)
     expect(ascListings[1].id).toBeGreaterThan(ascListings[0].id)
@@ -118,10 +118,10 @@ describe('sortCryptoListings', () => {
   // TODO: Not covering line 7 for some odd reason
   it('should sort CryptoListings in DESC order', () => {
     const cryptoList: CryptoListing[] = listings
-    const ascListings: CryptoListing[] = CryptoListingService.sortCryptoListings(cryptoList, false)
-    expect(ascListings[2].id).toBeLessThan(ascListings[0].id)
-    expect(ascListings[2].id).toBeLessThan(ascListings[1].id)
-    expect(ascListings[0].id).toBeGreaterThan(ascListings[1].id)
+    const descListning: CryptoListing[] = CryptoListingService.sortCryptoListings(cryptoList, false)
+    expect(descListning[2].id).toBeLessThan(descListning[0].id)
+    expect(descListning[2].id).toBeLessThan(descListning[1].id)
+    expect(descListning[0].id).toBeGreaterThan(descListning[1].id)
   })
 })
 
