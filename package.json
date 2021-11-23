@@ -7,7 +7,7 @@
     "build": "rm -rf ./build && tsc",
     "start": "node index.js --mode production",
     "dev": "nodemon --config nodemon.json",
-    "test": "jest --no-coverage",
+    "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "repository": {
