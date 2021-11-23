@@ -1,5 +1,5 @@
 import { Response, NextFunction, Request } from 'express'
-import { asyncHandler } from '../asyncHandler'
+import { asyncHandler } from '../asynchandler'
 
 const req: any = 'req'
 const res: any = 'res'

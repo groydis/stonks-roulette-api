@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { CryptoListing } from '../../@types/crypto'
-import * as CryptoListingService from '../cryptolistings'
+import { WinnerData, GameData } from '../../@types/game'
+import { CryptoListing, CryptoPlayer } from '../../@types/crypto'
+import * as GameServce from '../game'
 
 const listings: CryptoListing[] = [
   {
@@ -107,38 +108,33 @@ const listings: CryptoListing[] = [
   },
 ]
 
-describe('sortCryptoListings', () => {
-  it('should sort CryptoListings in ASC order', () => {
+describe('cryptoListingsToCryptoPlayers', () => {
+  it('should convert an array of CryptoListings o an Array of CryptoPlayers', () => {
     const cryptoList: CryptoListing[] = listings
-    const ascListings: CryptoListing[] = CryptoListingService.sortCryptoListings(cryptoList, true)
-    expect(ascListings[0].id).toBeLessThan(ascListings[2].id)
-    expect(ascListings[1].id).toBeLessThan(ascListings[2].id)
-    expect(ascListings[1].id).toBeGreaterThan(ascListings[0].id)
-  })
-  // TODO: Not covering line 7 for some odd reason
-  it('should sort CryptoListings in DESC order', () => {
-    const cryptoList: CryptoListing[] = listings
-    const descListning: CryptoListing[] = CryptoListingService.sortCryptoListings(cryptoList, false)
-    expect(descListning[2].id).toBeLessThan(descListning[0].id)
-    expect(descListning[2].id).toBeLessThan(descListning[1].id)
-    expect(descListning[0].id).toBeGreaterThan(descListning[1].id)
+    const cryptoPlayers: CryptoPlayer[] = GameServce.cryptoListingsToCryptoPlayers(cryptoList)
+    expect(cryptoPlayers).not.toEqual(cryptoList)
   })
 })
 
-// TODO: This test isn't working have tried with equal / not equal
-describe('shuffleCryptoListings', () => {
-  it('should shuffle CryptoListings', () => {
+describe('pickWinner', () => {
+  it('should pick a winner and return that winners place in the list', () => {
     const cryptoList: CryptoListing[] = listings
-    const listingsEnd: CryptoListing[] = CryptoListingService.shuffleCryptoListings(cryptoList)
-    expect(listingsEnd[0]).toEqual(cryptoList[0])
+    const winnerData: WinnerData = GameServce.pickWinner(cryptoList)
+    expect(winnerData.winnerPosition).toEqual(cryptoList.findIndex((player) => player === winnerData.winner))
   })
 })
 
-describe('reduceCryptoList', () => {
-  it('shoulder reduce the size of CryptoListings', () => {
-    const newSize: number = 2
+describe('constructGame', () => {
+  it('should return a game of the correct size', async () => {
+    const gameSize: number = 2
     const cryptoList: CryptoListing[] = listings
-    const reducedList: CryptoListing[] = CryptoListingService.reduceCryptoList(cryptoList, newSize)
-    expect(reducedList.length).toEqual(newSize)
+    const game: GameData = await GameServce.constructGame(cryptoList, gameSize)
+    expect(game.specifications.gameSize).toEqual(gameSize)
+  })
+  it('should have the correct winnerPosition position in the participants array', async () => {
+    const gameSize: number = 2
+    const cryptoList: CryptoListing[] = listings
+    const game: GameData = await GameServce.constructGame(cryptoList, gameSize)
+    expect(game.specifications.winnerPosition).toEqual(game.participants.findIndex((player) => player.id === game.winner.id))
   })
 })

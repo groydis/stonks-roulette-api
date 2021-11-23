@@ -11,7 +11,7 @@ export const listCryptos = asyncHandler(async (request: Request, response: Respo
   let data: CryptoListing[] = await getCryptoListings()
 
   if (sort === 'asc') {
-    data = sortCryptoListings(data)
+    data = sortCryptoListings(data, true)
   } else if (sort === 'desc') {
     data = sortCryptoListings(data, false)
   }

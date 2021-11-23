@@ -6,7 +6,7 @@ import { routes } from './routes'
 dotenv.config({ path: `${__dirname}/.env` })
 
 const app: express.Application = express()
-const port: number = Number(process.env.PORT)
+const port: number = Number(process.env.PORT) || 8080
 
 app.use('/', routes(express.Router()))
 
