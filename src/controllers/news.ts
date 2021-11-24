@@ -7,5 +7,5 @@ export const fetchNews = asyncHandler(async (request: Request, response: Respons
   const { subject } = request.params
   const { freq } = request.query
   const data: RedditHeadline[] = await getTopRedditThreads(subject, freq as string)
-  response.status(200).json(data[0])
+  response.status(200).json(data)
 })

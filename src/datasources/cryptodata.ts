@@ -1,7 +1,6 @@
 import { AxiosResponse } from 'axios'
 import { CryptoListing } from '../@types/crypto'
 
-/* Example in Node.js ES6 using request-promise */
 const axios = require('axios')
 
 export const getCryptoListings = async (): Promise<CryptoListing[]> => {
