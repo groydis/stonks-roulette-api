@@ -121,7 +121,7 @@
 			"response": []
 		},
 		{
-			"name": "/game/play Copy",
+			"name": "/health",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -134,6 +134,32 @@
 					"port": "8080",
 					"path": [
 						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/news/:subject?freq=day",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/news/bitcoin?freq=day",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"news",
+						"bitcoin"
+					],
+					"query": [
+						{
+							"key": "freq",
+							"value": "day"
+						}
 					]
 				}
 			},
